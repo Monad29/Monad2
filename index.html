@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luka's Apology</title>
+
   <style>
     body {
       background-color: pink;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
+      padding: 50px 20px;
+      margin: 0;
       color: white;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     button {
@@ -36,12 +39,13 @@
     }
 
     .message img {
-      max-width: 300px;
+      max-width: 90%;
+      height: auto;
       border-radius: 10px;
     }
 
     .text {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-top: 20px;
       color: white;
     }
@@ -75,7 +79,7 @@
   <button id="katyaBtn">Katya click here</button>
 
   <div class="message" id="messageBox">
-    <img src="Courage.jfif" alt="Sad Puppy">
+    <img src="Courage.jpg" alt="Sad Puppy" />
     <div class="text">Luka is sorry for being an idiot</div>
   </div>
 
@@ -88,23 +92,21 @@
       btn.style.display = 'none';
       messageBox.style.display = 'block';
 
-      // Generate floating hearts
       const heartInterval = setInterval(() => {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = Math.random() * 20 + 70 + "vh"; // start low
+        heart.style.top = Math.random() * 20 + 70 + "vh";
         heart.style.fontSize = `${24 + Math.random() * 20}px`;
         document.body.appendChild(heart);
-
         setTimeout(() => heart.remove(), 5000);
       }, 150);
 
-      // Stop hearts after 7 seconds
       setTimeout(() => clearInterval(heartInterval), 7000);
     });
   </script>
 
 </body>
 </html>
+
