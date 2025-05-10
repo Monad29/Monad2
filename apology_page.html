@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Luka's Apology</title>
+  <style>
+    body {
+      background-color: pink;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      color: white;
+      overflow: hidden;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: white;
+      color: #ff69b4;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .message {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    .message img {
+      max-width: 300px;
+      border-radius: 10px;
+    }
+
+    .text {
+      font-size: 1.8rem;
+      margin-top: 20px;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="katyaBtn">Katya click here</button>
+
+  <div class="message" id="messageBox">
+    <img src="Courage.jfif" alt="Sad Puppy">
+    <div class="text">Luka is sorry for being an idiot</div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('katyaBtn');
+    const messageBox = document.getElementById('messageBox');
+    const hearts = ["❤️", "🤍", "💖", "💘", "💕", "💗", "💓"];
+
+    btn.addEventListener('click', () => {
+      btn.style.display = 'none';
+      messageBox.style.display = 'block';
+
+      const heartInterval = setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 20 + 70 + "vh";
+        heart.style.fontSize = `${24 + Math.random() * 20}px`;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }, 150);
+
+      setTimeout(() => clearInterval(heartInterval), 7000);
+    });
+  </script>
+
+</body>
+</html>
