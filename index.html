@@ -3,51 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luka's Apology</title>
+  <title>Happy New Year Mariam!</title>
 
   <style>
     body {
-      background-color: pink;
+      background: linear-gradient(180deg, #0b3d2e, #145a32);
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px 20px;
       margin: 0;
-      color: white;
+      color: #fdfefe;
       overflow-x: hidden;
     }
 
     button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background-color: white;
-      color: #ff69b4;
+      padding: 16px 36px;
+      font-size: 1.3rem;
+      background-color: #1e8449; /* GREEN */
+      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
 
     button:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
     .message {
       display: none;
-      margin-top: 30px;
-      animation: fadeIn 1s ease-in forwards;
+      margin-top: 35px;
+      animation: fadeIn 1.2s ease-in forwards;
     }
 
     .message img {
       max-width: 90%;
       height: auto;
-      border-radius: 10px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
     .text {
       font-size: 1.6rem;
-      margin-top: 20px;
-      color: white;
+      margin-top: 25px;
+      color: #f9e79f;
+      line-height: 1.4;
     }
 
     @keyframes fadeIn {
@@ -55,10 +59,10 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    .heart {
+    .icecream {
       position: absolute;
-      font-size: 24px;
-      animation: floatUp 5s linear forwards;
+      font-size: 28px;
+      animation: floatUp 5.5s linear forwards;
       pointer-events: none;
     }
 
@@ -69,41 +73,49 @@
       }
       100% {
         opacity: 0;
-        transform: translateY(-200px) scale(1.5);
+        transform: translateY(-240px) scale(1.6);
       }
     }
   </style>
 </head>
 <body>
 
-  <button id="katyaBtn">Katya click here</button>
+  <button id="mariamBtn">Mariam click here 🍦</button>
 
   <div class="message" id="messageBox">
-    <img src="Courage.jpg" alt="Sad Puppy" />
-    <div class="text">Luka is sorry for being an idiot</div>
+    <img src="napoleon-snowman.png" alt="Napoleon Snowman" />
+    <div class="text">
+      Happy New Year Mariam! 🎉✨<br><br>
+      I wish all your dreams and goals to come true.<br>
+      And I believe that you can achieve what I couldn't —<br>
+      creating a world-dominant empire,<br>
+      <strong>the Bestavashvili dynasty.</strong> 👑
+    </div>
   </div>
 
   <script>
-    const btn = document.getElementById('katyaBtn');
+    const btn = document.getElementById('mariamBtn');
     const messageBox = document.getElementById('messageBox');
-    const hearts = ["❤️", "🤍", "💖", "💘", "💕", "💗", "💓"];
+
+    // 🍦 Ice cream flavors (caramel dominant)
+    const iceCreams = ["🍮", "🍮", "🍮", "🍦", "🍨", "🍯"];
 
     btn.addEventListener('click', () => {
       btn.style.display = 'none';
       messageBox.style.display = 'block';
 
-      const heartInterval = setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = Math.random() * 20 + 70 + "vh";
-        heart.style.fontSize = `${24 + Math.random() * 20}px`;
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
+      const iceInterval = setInterval(() => {
+        const ice = document.createElement('div');
+        ice.classList.add('icecream');
+        ice.textContent = iceCreams[Math.floor(Math.random() * iceCreams.length)];
+        ice.style.left = Math.random() * 100 + "vw";
+        ice.style.top = Math.random() * 20 + 70 + "vh";
+        ice.style.fontSize = `${26 + Math.random() * 22}px`;
+        document.body.appendChild(ice);
+        setTimeout(() => ice.remove(), 5500);
       }, 150);
 
-      setTimeout(() => clearInterval(heartInterval), 7000);
+      setTimeout(() => clearInterval(iceInterval), 8500);
     });
   </script>
 
