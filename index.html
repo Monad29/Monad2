@@ -48,10 +48,13 @@
     }
 
     .text {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-top: 25px;
       color: #b7950b;
-      line-height: 1.4;
+      line-height: 1.5;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @keyframes fadeIn {
@@ -86,11 +89,7 @@
   <div class="message" id="messageBox">
     <img src="napoleon-snowman.png" alt="Napoleon Snowman" />
     <div class="text">
-      Happy New Year Mariam! 🎉✨<br><br>
-      I wish all your dreams and goals to come true.<br>
-      And I believe that you can achieve what I couldn't —<br>
-      creating a world-dominant empire,<br>
-      <strong>the Bestavashvili dynasty.</strong> 👑
+      You are a truly special person, I want you to know that meeting you was the best thing that happened to me in 2025 💗
     </div>
   </div>
 
@@ -98,28 +97,27 @@
     const btn = document.getElementById('mariamBtn');
     const messageBox = document.getElementById('messageBox');
 
-    // ❄️ Decorations
     const preDecor = ["❄️","❅","❆","🍦","🍨","🎄","🎁"];
     const snowflakes = ["❄️","❅","❆","✻","✼","✺"];
 
-    function spawn(itemList, duration, interval) {
-      const i = setInterval(() => {
+    function spawn(items, duration, interval) {
+      const timer = setInterval(() => {
         const el = document.createElement('div');
-        el.classList.add('float');
-        el.textContent = itemList[Math.floor(Math.random() * itemList.length)];
+        el.className = 'float';
+        el.textContent = items[Math.floor(Math.random() * items.length)];
         el.style.left = Math.random() * 100 + "vw";
         el.style.top = Math.random() * 20 + 80 + "vh";
         el.style.fontSize = `${22 + Math.random() * 24}px`;
         document.body.appendChild(el);
         setTimeout(() => el.remove(), duration);
       }, interval);
-      setTimeout(() => clearInterval(i), duration);
+
+      setTimeout(() => clearInterval(timer), duration);
     }
 
-    // 🎄 Decorations on page load
+    // Decorations before click
     spawn(preDecor, 12000, 250);
 
-    // ❄️ After click: snowflake celebration
     btn.addEventListener('click', () => {
       btn.style.display = 'none';
       messageBox.style.display = 'block';
