@@ -7,31 +7,31 @@
 
   <style>
     body {
-      background: linear-gradient(180deg, #0b3d2e, #145a32);
+      background: #ffffff;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px 20px;
       margin: 0;
-      color: #fdfefe;
+      color: #2c3e50;
       overflow-x: hidden;
     }
 
     button {
       padding: 16px 36px;
       font-size: 1.3rem;
-      background-color: #1e8449; /* GREEN */
+      background-color: #c0392b;
       color: white;
       border: none;
       border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     }
 
     button:hover {
       transform: scale(1.08);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
     }
 
     .message {
@@ -44,13 +44,13 @@
       max-width: 90%;
       height: auto;
       border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .text {
       font-size: 1.6rem;
       margin-top: 25px;
-      color: #f9e79f;
+      color: #b7950b;
       line-height: 1.4;
     }
 
@@ -59,10 +59,10 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    .icecream {
+    .float {
       position: absolute;
-      font-size: 28px;
-      animation: floatUp 5.5s linear forwards;
+      font-size: 26px;
+      animation: floatUp 6s linear forwards;
       pointer-events: none;
     }
 
@@ -73,14 +73,15 @@
       }
       100% {
         opacity: 0;
-        transform: translateY(-240px) scale(1.6);
+        transform: translateY(-260px) scale(1.6);
       }
     }
   </style>
 </head>
+
 <body>
 
-  <button id="mariamBtn">Mariam click here 🍦</button>
+  <button id="mariamBtn">Mariam click here ❄️</button>
 
   <div class="message" id="messageBox">
     <img src="napoleon-snowman.png" alt="Napoleon Snowman" />
@@ -97,25 +98,32 @@
     const btn = document.getElementById('mariamBtn');
     const messageBox = document.getElementById('messageBox');
 
-    // 🍦 Ice cream flavors (caramel dominant)
-    const iceCreams = ["🍮", "🍮", "🍮", "🍦", "🍨", "🍯"];
+    // ❄️ Decorations
+    const preDecor = ["❄️","❅","❆","🍦","🍨","🎄","🎁"];
+    const snowflakes = ["❄️","❅","❆","✻","✼","✺"];
 
+    function spawn(itemList, duration, interval) {
+      const i = setInterval(() => {
+        const el = document.createElement('div');
+        el.classList.add('float');
+        el.textContent = itemList[Math.floor(Math.random() * itemList.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.top = Math.random() * 20 + 80 + "vh";
+        el.style.fontSize = `${22 + Math.random() * 24}px`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), duration);
+      }, interval);
+      setTimeout(() => clearInterval(i), duration);
+    }
+
+    // 🎄 Decorations on page load
+    spawn(preDecor, 12000, 250);
+
+    // ❄️ After click: snowflake celebration
     btn.addEventListener('click', () => {
       btn.style.display = 'none';
       messageBox.style.display = 'block';
-
-      const iceInterval = setInterval(() => {
-        const ice = document.createElement('div');
-        ice.classList.add('icecream');
-        ice.textContent = iceCreams[Math.floor(Math.random() * iceCreams.length)];
-        ice.style.left = Math.random() * 100 + "vw";
-        ice.style.top = Math.random() * 20 + 70 + "vh";
-        ice.style.fontSize = `${26 + Math.random() * 22}px`;
-        document.body.appendChild(ice);
-        setTimeout(() => ice.remove(), 5500);
-      }, 150);
-
-      setTimeout(() => clearInterval(iceInterval), 8500);
+      spawn(snowflakes, 9000, 120);
     });
   </script>
 
